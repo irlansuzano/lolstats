@@ -1,12 +1,15 @@
 package br.com.lolstats.entities;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -16,32 +19,40 @@ public class Time {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idTime;
-	private String nomeTime;
-	private Integer Integrantes;
-	private List<Player> players = new ArrayList<>();
-	private Campeonato campeonato;
+	private String nome; 
+	private Double percVitoria;
+	private Double percTorres;
+	private Double percFb;
+	private Double perc1Torre;
+	private Integer posicao;
+	private String tempoMedio;
+	
+	@ManyToOne()
+	private Liga liga;
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_time")
+	private List<Player> players;
+	
 	
 	public Time() {
 		
 	}
-	
-	public Time(String nomeTime, Integer idTime, Integer integrantes, List<Player> players, Campeonato campeonato) {
+
+	public Time(Integer idTime, String nome, Double perc_vitoria, Double perc_torres, Double perc_fb,
+			Double perc_1torre, Integer posicao, String tempo_medio, Liga liga) {
 		super();
-		this.nomeTime = nomeTime;
 		this.idTime = idTime;
-		this.Integrantes = integrantes;
-		this.players = players;
-		this.campeonato = campeonato;
+		this.nome = nome;
+		this.percVitoria = perc_vitoria;
+		this.percTorres = perc_torres;
+		this.percFb = perc_fb;
+		this.perc1Torre = perc_1torre;
+		this.posicao = posicao;
+		this.tempoMedio = tempo_medio;
 	}
 
-	public String getNomeTime() {
-		return nomeTime;
-	}
-
-	public void setNomeTime(String nomeTime) {
-		this.nomeTime = nomeTime;
-	}
-
+	
 	public Integer getIdTime() {
 		return idTime;
 	}
@@ -50,12 +61,68 @@ public class Time {
 		this.idTime = idTime;
 	}
 
-	public Integer getIntegrantes() {
-		return Integrantes;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setIntegrantes(Integer integrantes) {
-		Integrantes = integrantes;
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public Double getPercVitoria() {
+		return percVitoria;
+	}
+
+	public void setPercVitoria(Double percVitoria) {
+		this.percVitoria = percVitoria;
+	}
+
+	public Double getPercTorres() {
+		return percTorres;
+	}
+
+	public void setPercTorres(Double percTorres) {
+		this.percTorres = percTorres;
+	}
+
+	public Double getPercFb() {
+		return percFb;
+	}
+
+	public void setPercFb(Double percFb) {
+		this.percFb = percFb;
+	}
+
+	public Double getPerc1Torre() {
+		return perc1Torre;
+	}
+
+	public void setPerc1Torre(Double perc1Torre) {
+		this.perc1Torre = perc1Torre;
+	}
+
+	public Integer getPosicao() {
+		return posicao;
+	}
+
+	public void setPosicao(Integer posicao) {
+		this.posicao = posicao;
+	}
+
+	public String getTempoMedio() {
+		return tempoMedio;
+	}
+
+	public void setTempoMedio(String tempoMedio) {
+		this.tempoMedio = tempoMedio;
+	}
+
+	public Liga getLiga() {
+		return liga;
+	}
+
+	public void setLiga(Liga liga) {
+		this.liga = liga;
 	}
 
 	public List<Player> getPlayers() {
@@ -66,14 +133,9 @@ public class Time {
 		this.players = players;
 	}
 
-	public Campeonato getCampeonato() {
-		return campeonato;
-	}
 
-	public void setCampeonato(Campeonato campeonato) {
-		this.campeonato = campeonato;
-	}
+
+
 	
 	
-
 }

@@ -1,39 +1,34 @@
 package br.com.lolstats.entities;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tb_campeonato")
-public class Campeonato {
+@Table(name = "tb_liga")
+public class Liga{
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@EmbeddedId
 	private Integer id;
 	private String nome;
 	
-	private List<Time> times = new ArrayList<> ();
+	@OneToMany(mappedBy = "liga", cascade = CascadeType.ALL)
+	private List<Time> times;
 	
-	public Campeonato() {
-		
-	}
-	
-	
-	
-	public Campeonato(Integer id, String nome) {
+	public Liga() { 
+	} 
+	 
+	public Liga(Integer id, String nome) {
 		super();
 		this.id = id;
 		this.nome = nome;
-	}
-
-
-
+	} 
+	
+	
 	public Integer getId() {
 		return id;
 	}
@@ -50,15 +45,13 @@ public class Campeonato {
 		this.nome = nome;
 	}
 
-	public void addTeam(Time time) {
-		times.add(time);
+	public List<Time> getTimes() {
+		return times;
 	}
-	
-	public void removeTeam(Time time) {
-		times.remove(time);
-	}
-	
-	
-	
 
+	public void setTimes(List<Time> times) {
+		this.times = times;
+	}  
+
+	
 }

@@ -4,9 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import br.com.lolstats.enums.Roles;
 
 
 @Entity
@@ -15,19 +14,23 @@ public class Player {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private String nome;
-	private Roles role;
-	private Time time;
+	private String nome; 
+	private Integer idRole;
+	
+	@ManyToOne
+	private Integer idTime;
 	
 	public Player() {
 		
-	}
-	
-	public Player(Integer id, String nome, Roles role) {
+	} 
+
+	public Player(Integer id, String nome, Integer idRole, Integer idTime) {
+		super();
 		this.id = id;
 		this.nome = nome;
-		this.role = role;
-	}
+		this.idRole = idRole;
+		this.idTime = idTime;
+	} 
 
 	public Integer getId() {
 		return id;
@@ -45,17 +48,21 @@ public class Player {
 		this.nome = nome;
 	}
 
-	public Roles getRole() {
-		return role;
+	public Integer getIdRole() {
+		return idRole;
 	}
 
-	public void setRole(Roles role) {
-		this.role = role;
+	public void setIdRole(Integer idRole) {
+		this.idRole = idRole;
 	}
-	
-	
 
-	
+	public Integer getIdTime() {
+		return idTime;
+	}
+
+	public void setIdTime(Integer idTime) {
+		this.idTime = idTime;
+	}  
 	
 	
 }
