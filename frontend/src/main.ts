@@ -1,4 +1,8 @@
 import { createApp } from 'vue'
 import App from './App.vue'
+const app = createApp(App);
 
-createApp(App).mount('#app')
+import PrimeVue from 'primevue/config';
+app.use(PrimeVue);
+
+app.mount('#app');
