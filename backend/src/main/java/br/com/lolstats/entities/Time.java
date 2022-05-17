@@ -1,6 +1,8 @@
 package br.com.lolstats.entities;
 
+import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -14,8 +16,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_times")
-public class Time {
-
+public class Time implements Serializable {
+ 
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idTime;
@@ -133,7 +136,30 @@ public class Time {
 		this.players = players;
 	}
 
+	@Override
+	public int hashCode() {
+		return Objects.hash(idTime, liga, nome, perc1Torre, percFb, percTorres, percVitoria, players, posicao,
+				tempoMedio);
+	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Time other = (Time) obj;
+		return Objects.equals(idTime, other.idTime) && Objects.equals(liga, other.liga)
+				&& Objects.equals(nome, other.nome) && Objects.equals(perc1Torre, other.perc1Torre)
+				&& Objects.equals(percFb, other.percFb) && Objects.equals(percTorres, other.percTorres)
+				&& Objects.equals(percVitoria, other.percVitoria) && Objects.equals(players, other.players)
+				&& Objects.equals(posicao, other.posicao) && Objects.equals(tempoMedio, other.tempoMedio);
+	}
+
+
+	
 
 
 	
