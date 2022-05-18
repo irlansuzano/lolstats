@@ -9,11 +9,11 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "tb_role")
 public class Role {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	private String lane;
 
 	public Role() {
@@ -39,5 +39,5 @@ public class Role {
 
 	public void setLane(String lane) {
 		this.lane = lane;
-	} 
+	}
 }

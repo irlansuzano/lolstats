@@ -7,22 +7,21 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name = "tb_player")
 public class Player {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private String nome; 
+	private String nome;
 	private Integer idRole;
-	
+
 	@ManyToOne
 	private Integer idTime;
-	
+
 	public Player() {
-		
-	} 
+
+	}
 
 	public Player(Integer id, String nome, Integer idRole, Integer idTime) {
 		super();
@@ -30,7 +29,7 @@ public class Player {
 		this.nome = nome;
 		this.idRole = idRole;
 		this.idTime = idTime;
-	} 
+	}
 
 	public Integer getId() {
 		return id;
@@ -62,7 +61,6 @@ public class Player {
 
 	public void setIdTime(Integer idTime) {
 		this.idTime = idTime;
-	}  
-	
-	
+	}
+
 }

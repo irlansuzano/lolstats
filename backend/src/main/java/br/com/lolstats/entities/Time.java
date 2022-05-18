@@ -17,33 +17,32 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "tb_times")
 public class Time implements Serializable {
- 
+
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer idTime;
-	private String nome; 
+	private Long idTime;
+	private String nome;
 	private Double percVitoria;
 	private Double percTorres;
 	private Double percFb;
 	private Double perc1Torre;
 	private Integer posicao;
 	private String tempoMedio;
-	
+
 	@ManyToOne()
 	private Liga liga;
-	
+
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_time")
 	private List<Player> players;
-	
-	
+
 	public Time() {
-		
+
 	}
 
-	public Time(Integer idTime, String nome, Double perc_vitoria, Double perc_torres, Double perc_fb,
-			Double perc_1torre, Integer posicao, String tempo_medio, Liga liga) {
+	public Time(Long idTime, String nome, Double perc_vitoria, Double perc_torres, Double perc_fb, Double perc_1torre,
+			Integer posicao, String tempo_medio, Liga liga) {
 		super();
 		this.idTime = idTime;
 		this.nome = nome;
@@ -55,12 +54,11 @@ public class Time implements Serializable {
 		this.tempoMedio = tempo_medio;
 	}
 
-	
-	public Integer getIdTime() {
+	public Long getIdTime() {
 		return idTime;
 	}
 
-	public void setIdTime(Integer idTime) {
+	public void setIdTime(Long idTime) {
 		this.idTime = idTime;
 	}
 
@@ -158,10 +156,4 @@ public class Time implements Serializable {
 				&& Objects.equals(posicao, other.posicao) && Objects.equals(tempoMedio, other.tempoMedio);
 	}
 
-
-	
-
-
-	
-	
 }

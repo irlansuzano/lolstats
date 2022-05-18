@@ -10,25 +10,24 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_liga")
-public class Liga{
-	
+public class Liga {
+
 	@EmbeddedId
 	private Integer id;
 	private String nome;
-	
+
 	@OneToMany(mappedBy = "liga", cascade = CascadeType.ALL)
 	private List<Time> times;
-	
-	public Liga() { 
-	} 
-	 
+
+	public Liga() {
+	}
+
 	public Liga(Integer id, String nome) {
 		super();
 		this.id = id;
 		this.nome = nome;
-	} 
-	
-	
+	}
+
 	public Integer getId() {
 		return id;
 	}
@@ -51,7 +50,6 @@ public class Liga{
 
 	public void setTimes(List<Time> times) {
 		this.times = times;
-	}  
+	}
 
-	
 }
