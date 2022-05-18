@@ -12,7 +12,7 @@ import javax.persistence.Table;
 public class Player {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
 	private String nome;
 	private Integer idRole;
 
@@ -23,7 +23,7 @@ public class Player {
 
 	}
 
-	public Player(Integer id, String nome, Integer idRole, Integer idTime) {
+	public Player(Long id, String nome, Integer idRole, Integer idTime) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -31,11 +31,11 @@ public class Player {
 		this.idTime = idTime;
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

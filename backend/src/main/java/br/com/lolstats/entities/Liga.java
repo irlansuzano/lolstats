@@ -1,6 +1,9 @@
 package br.com.lolstats.entities;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.CascadeType;
 import javax.persistence.EmbeddedId;
@@ -10,29 +13,31 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_liga")
-public class Liga {
-
+public class Liga implements Serializable{
+	private static final long serialVersionUID = 1L;
+	
+		
 	@EmbeddedId
-	private Integer id;
+	private Long id;
 	private String nome;
 
 	@OneToMany(mappedBy = "liga", cascade = CascadeType.ALL)
-	private List<Time> times;
+	private List<Time> times = new ArrayList<>();
 
 	public Liga() {
 	}
 
-	public Liga(Integer id, String nome) {
+	public Liga(Long id, String nome) {
 		super();
 		this.id = id;
 		this.nome = nome;
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -47,9 +52,23 @@ public class Liga {
 	public List<Time> getTimes() {
 		return times;
 	}
-
-	public void setTimes(List<Time> times) {
-		this.times = times;
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, nome, times);
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Liga other = (Liga) obj;
+		return Objects.equals(id, other.id) && Objects.equals(nome, other.nome) && Objects.equals(times, other.times);
+	}
+	
+	
 
 }
