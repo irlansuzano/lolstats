@@ -1,29 +1,12 @@
 package br.com.lolstats.repositories;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.springframework.stereotype.Component;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import br.com.lolstats.entities.Role;
 
-@Component
-public class RoleRepository {    
+@Repository
+public interface RoleRepository extends JpaRepository<Role, Long>{    
  
-	private Map<Long, Role> roles = new HashMap<>();
 
-	public void save(Role role) {
-		roles.put(role.getId(), role);
-	}
-
-	public Role findById(Long id) {
-		return roles.get(id);
-	}
-
-	public List<Role> findAll() {
-
-		return new ArrayList<Role>(roles.values());
-	}
 }
