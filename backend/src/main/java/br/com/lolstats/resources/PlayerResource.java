@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.lolstats.entities.Player;
-import br.com.lolstats.entities.Time;
 import br.com.lolstats.repositories.PlayerRepository;
-import br.com.lolstats.repositories.TimeRepository;
 
 @RestController 
 @RequestMapping(value = "/players")
@@ -30,7 +28,7 @@ public class PlayerResource {
 
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<Player> findById(@PathVariable Long id) {
-		Player player = playerRepository.findById(id);
+		Player player = playerRepository.findById(id).get();
 		return ResponseEntity.ok().body(player);
 	}
 
