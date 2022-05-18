@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -30,11 +29,11 @@ public class Time implements Serializable {
 	private Integer posicao;
 	private String tempoMedio;
 
-	@ManyToOne()
+	@ManyToOne
+	@JoinColumn(name = "id_liga")
 	private Liga liga;
 
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id_time")
+	@OneToMany(mappedBy = "time")
 	private List<Player> players;
 
 	public Time() {
@@ -128,10 +127,6 @@ public class Time implements Serializable {
 
 	public List<Player> getPlayers() {
 		return players;
-	}
-
-	public void setPlayers(List<Player> players) {
-		this.players = players;
 	}
 
 	@Override

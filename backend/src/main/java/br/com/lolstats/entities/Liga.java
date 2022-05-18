@@ -1,11 +1,9 @@
 package br.com.lolstats.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import javax.persistence.CascadeType;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -23,8 +21,8 @@ public class Liga implements Serializable{
 	private Long id;
 	private String nome;
 	@JsonIgnore 
-	@OneToMany(mappedBy = "liga", cascade = CascadeType.ALL)
-	private List<Time> times = new ArrayList<>();
+	@OneToMany(mappedBy = "liga")
+	private List<Time> times;
 
 	public Liga() {
 	}
@@ -54,6 +52,7 @@ public class Liga implements Serializable{
 	public List<Time> getTimes() {
 		return times;
 	}
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id, nome, times);

@@ -1,9 +1,12 @@
 package br.com.lolstats.entities;
 
+import java.util.Objects;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -14,21 +17,25 @@ public class Player {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
-	private Integer idRole;
+	
+	@ManyToOne
+	@JoinColumn(name = "id_role")
+	private Role role;
 
 	@ManyToOne
-	private Integer idTime;
+	@JoinColumn(name = "id_time")
+	private Time time;
 
 	public Player() {
 
 	}
 
-	public Player(Long id, String nome, Integer idRole, Integer idTime) {
+	public Player(Long id, String nome, Role role, Time time) {
 		super();
 		this.id = id;
 		this.nome = nome;
-		this.idRole = idRole;
-		this.idTime = idTime;
+		this.role = role;
+		this.time = time;
 	}
 
 	public Long getId() {
@@ -47,20 +54,40 @@ public class Player {
 		this.nome = nome;
 	}
 
-	public Integer getIdRole() {
-		return idRole;
+	public Role getRole() {
+		return role;
 	}
 
-	public void setIdRole(Integer idRole) {
-		this.idRole = idRole;
+	public void setRole(Role role) {
+		this.role = role;
 	}
 
-	public Integer getIdTime() {
-		return idTime;
+	public Time getTime() {
+		return time;
 	}
 
-	public void setIdTime(Integer idTime) {
-		this.idTime = idTime;
+	public void setTime(Time time) {
+		this.time = time;
 	}
 
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, nome, role, time);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Player other = (Player) obj;
+		return Objects.equals(id, other.id) && Objects.equals(nome, other.nome) && Objects.equals(role, other.role)
+				&& Objects.equals(time, other.time);
+	}
+
+	
+	
 }
