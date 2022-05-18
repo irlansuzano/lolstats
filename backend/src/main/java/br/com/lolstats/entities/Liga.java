@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "tb_liga")
 public class Liga implements Serializable{
@@ -20,7 +22,7 @@ public class Liga implements Serializable{
 	@EmbeddedId
 	private Long id;
 	private String nome;
-
+	@JsonIgnore 
 	@OneToMany(mappedBy = "liga", cascade = CascadeType.ALL)
 	private List<Time> times = new ArrayList<>();
 
