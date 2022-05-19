@@ -15,22 +15,22 @@ const routes = [
       {
         path: '404',
         name: 'Page404',
-        component: () => import('')
+        component: () => import('@/views/pages/Page404.vue')
       },
       {
         path: '500',
         name: 'Page500',
-        component: () => import('')
+        component: () => import('@/views/pages/Page500.vue')
       },
       {
         path: 'login',
         name: 'Login',
-        component: () => import('')
+        component: () => import('@/views/pages/Login.vue')
       },
       {
         path: 'register',
         name: 'Register',
-        component: () => import('')
+        component: () => import('@/views/pages/Register.vue')
       }
     ]
   }
