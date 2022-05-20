@@ -19,22 +19,22 @@ import Button from 'primevue/button';
         </div>
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-start flex-grow-1 ps-3">
-            <li class="nav-item">
-              <Button label="Link"
+            <li class="nav-item pe-2">
+              <Button label="CRONOGRAMA"
                 class="p-button-text p-button-rounded border-none font-light line-height-2 text-blue-500" />
             </li>
-            <li class="nav-item">
-              <Button label="Link"
+            <li class="nav-item ps-2">
+              <Button label="COLOCAÇÕES"
                 class="p-button-text p-button-rounded border-none font-light line-height-2 text-blue-500" />
             </li>
           </ul>
           <ul class="navbar-nav justify-content-end">
-            <li class="nav-item">
-              <Button label="Login"
+            <li class="nav-item pe-3">
+              <Button label="LOGIN"
                 class="p-button-text p-button-rounded border-none font-light line-height-2 text-blue-500" />
             </li>
-            <li class="nav-item">
-              <Button label="Registre-se"
+            <li class="nav-item ps-3">
+              <Button label="REGISTRE-SE"
                 class="p-button-rounded border-none ml-5 font-light text-white line-height-2 bg-blue-500" />
             </li>
           </ul>
