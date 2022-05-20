@@ -1,6 +1,11 @@
 import { h, resolveComponent } from "vue";
 import { createRouter, createWebHashHistory } from "vue-router";
 
+import Page404 from "../views/pages/Page404.vue";
+import Page500 from "../views/pages/Page500.vue";
+import Login from "../views/pages/Login.vue";
+import Register from "../views/pages/Register.vue";
+
 const routes = [
   {
     path: '/pages',
@@ -15,22 +20,22 @@ const routes = [
       {
         path: '404',
         name: 'Page404',
-        component: () => import('@/views/pages/Page404.vue')
+        component: Page404
       },
       {
         path: '500',
         name: 'Page500',
-        component: () => import('@/views/pages/Page500.vue')
+        component: Page500
       },
       {
         path: 'login',
         name: 'Login',
-        component: () => import('@/views/pages/Login.vue')
+        component: Login
       },
       {
         path: 'register',
         name: 'Register',
-        component: () => import('@/views/pages/Register.vue')
+        component: Register
       }
     ]
   }
