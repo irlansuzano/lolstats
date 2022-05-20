@@ -1,6 +1,5 @@
 package br.com.lolstats.resources;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,27 +9,27 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.lolstats.entities.Time;
-import br.com.lolstats.repositories.TimeRepository;
+import br.com.lolstats.entities.Player;
+import br.com.lolstats.repositories.PlayerRepository;
 
-@RestController
-@RequestMapping(value = "/times")
-public class TimeResource {
+@RestController 
+@RequestMapping(value = "/players")
+public class PlayerResource {
 
 	@Autowired
-	private TimeRepository timeRepository;
+	private PlayerRepository playerRepository;
 
 	@GetMapping // anotação que transforma o metodo para um endpoint que responda por uma
 				// requisição get
-	public ResponseEntity<List<Time>> findAll() {
-		List<Time> times = timeRepository.findAll();
-		return ResponseEntity.ok().body(times); // resposta padrão "bonitinha"
+	public ResponseEntity<List<Player>> findAll() {
+		List<Player> players = playerRepository.findAll();
+		return ResponseEntity.ok().body(players); // resposta padrão "bonitinha"
 	}
 
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Time> findById(@PathVariable Long id) {
-		Time time = timeRepository.findById(id).get();
-		return ResponseEntity.ok().body(time);
+	public ResponseEntity<Player> findById(@PathVariable Long id) {
+		Player player = playerRepository.findById(id).get();
+		return ResponseEntity.ok().body(player);
 	}
 
 }
