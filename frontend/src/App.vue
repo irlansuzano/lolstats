@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import Login from './pages/Login.vue';
+import AppNavbar from "./components/patterns/AppNavbar.vue";
 </script>
 
 <template>
-  <Login />
+  <AppNavbar />
 </template>
 
 <style>
