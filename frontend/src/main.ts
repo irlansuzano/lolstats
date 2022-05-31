@@ -13,6 +13,10 @@ import 'primevue/resources/themes/lara-light-blue/theme.css';
 import './assets/styles/layout.scss';
 
 import router from './router/main';
+
+import StyleClass from 'primevue/styleclass';
+app.directive('styleclass', StyleClass);
+
 app.use(router);
 
 app.mount('#app');
