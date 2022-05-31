@@ -14,7 +14,7 @@ import br.com.lolstats.entities.Role;
 import br.com.lolstats.repositories.RoleRepository;
 
 @RestController 
-@RequestMapping(value = "/players")
+@RequestMapping(value = "/roles")
 public class RoleResource {
 
 	@Autowired
