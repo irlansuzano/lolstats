@@ -15,7 +15,7 @@ import javax.persistence.Table;
 public class Player {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long idPlayer;
 	private String nome;
 	
 	@ManyToOne
@@ -32,18 +32,18 @@ public class Player {
 
 	public Player(Long id, String nome, Role role, Time time) {
 		super();
-		this.id = id;
+		this.idPlayer = id;
 		this.nome = nome;
 		this.role = role;
 		this.time = time;
 	}
 
 	public Long getId() {
-		return id;
+		return idPlayer;
 	}
 
 	public void setId(Long id) {
-		this.id = id;
+		this.idPlayer = id;
 	}
 
 	public String getNome() {
@@ -72,7 +72,7 @@ public class Player {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, nome, role, time);
+		return Objects.hash(idPlayer, nome, role, time);
 	}
 
 	@Override
@@ -84,7 +84,7 @@ public class Player {
 		if (getClass() != obj.getClass())
 			return false;
 		Player other = (Player) obj;
-		return Objects.equals(id, other.id) && Objects.equals(nome, other.nome) && Objects.equals(role, other.role)
+		return Objects.equals(idPlayer, other.idPlayer) && Objects.equals(nome, other.nome) && Objects.equals(role, other.role)
 				&& Objects.equals(time, other.time);
 	}
 

@@ -1,5 +1,7 @@
 package br.com.lolstats.entities;
 
+import net.bytebuddy.dynamic.loading.InjectionClassLoader;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -8,18 +10,19 @@ import java.io.Serializable;
 public class Usuario implements Serializable {
 
     @Id
-    private Long  id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long  idUsuario;
     private String nome;
     private String email;
     private String senha;
 
 
     public Long getId() {
-        return id;
+        return idUsuario;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.idUsuario = id;
     }
 
     public String getNome() {

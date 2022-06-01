@@ -16,7 +16,7 @@ public class Role {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long idRole;
 
 	private String lane;
 	
@@ -28,16 +28,16 @@ public class Role {
 
 	public Role(Long id, String lane) {
 		super();
-		this.id = id;
+		this.idRole = id;
 		this.lane = lane;
 	}
 
 	public Long getId() {
-		return id;
+		return idRole;
 	}
 
 	public void setId(Long id) {
-		this.id = id;
+		this.idRole = id;
 	}
 
 	public String getLane() {
@@ -54,7 +54,7 @@ public class Role {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, lane, players);
+		return Objects.hash(idRole, lane, players);
 	}
 
 	@Override
@@ -66,7 +66,7 @@ public class Role {
 		if (getClass() != obj.getClass())
 			return false;
 		Role other = (Role) obj;
-		return Objects.equals(id, other.id) && Objects.equals(lane, other.lane)
+		return Objects.equals(idRole, other.idRole) && Objects.equals(lane, other.lane)
 				&& Objects.equals(players, other.players);
 	}
 	

@@ -4,10 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -15,30 +12,39 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "tb_liga")
 public class Liga implements Serializable{
 	private static final long serialVersionUID = 1L;
-	
-		
-	@EmbeddedId
-	private Long id;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long idLiga;
 	private String nome;
 	@JsonIgnore 
 	@OneToMany(mappedBy = "liga")
 	private List<Time> times;
+
+
+	public static Liga converter(Liga liga){
+		var l = new Liga();
+		l.setId(liga.getId());
+		l.setNome(liga.getNome());
+
+		return l;
+	}
 
 	public Liga() {
 	}
 
 	public Liga(Long id, String nome) {
 		super();
-		this.id = id;
+		this.idLiga = id;
 		this.nome = nome;
 	}
 
 	public Long getId() {
-		return id;
+		return idLiga;
 	}
 
 	public void setId(Long id) {
-		this.id = id;
+		this.idLiga = id;
 	}
 
 	public String getNome() {
@@ -55,7 +61,7 @@ public class Liga implements Serializable{
 	
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, nome, times);
+		return Objects.hash(idLiga, nome, times);
 	}
 
 	@Override
@@ -67,7 +73,7 @@ public class Liga implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Liga other = (Liga) obj;
-		return Objects.equals(id, other.id) && Objects.equals(nome, other.nome) && Objects.equals(times, other.times);
+		return Objects.equals(idLiga, other.idLiga) && Objects.equals(nome, other.nome) && Objects.equals(times, other.times);
 	}
 	
 	
